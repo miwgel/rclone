@@ -374,6 +374,9 @@ func (f *Fs) Precision() time.Duration {
 //
 // If it isn't possible then return fs.ErrorCantCopy
 func (f *Fs) Copy(ctx context.Context, src fs.Object, remote string) (fs.Object, error) {
+  // ICloud cooy endpoint is broken. Once they fixed it this can be re-enabled.
+  return nil, fs.ErrorCantCopy
+
 	// note: so many calls its only just faster then a reupload for big files.
 	srcObj, ok := src.(*Object)
 	if !ok {
